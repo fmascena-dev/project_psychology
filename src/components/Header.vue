@@ -4,7 +4,7 @@
 
     <nav>
       <ul>
-        <li><a href="./HeroSection">Início</a></li>
+        <li><a href="#home">Início</a></li>
         <li><a href="#services">Serviços</a></li>
         <li><a href="#about">Sobre mim</a></li>
         <li><a href="#contact">Contato</a></li>
