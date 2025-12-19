@@ -1,4 +1,4 @@
-import './styles/globals.css'
+import './globals.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
