@@ -129,7 +129,6 @@ const formData = ref({
 const handleSubmit = async () => {
   isSubmitting.value = true
 
-  // Simulate form submission
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   alert('Mensagem enviada! Entrarei em contato em breve. Obrigada!')

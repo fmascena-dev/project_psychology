@@ -129,7 +129,6 @@ const scrollToSection = (href: string) => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 
-  // Check initial theme
   if (document.documentElement.classList.contains('dark')) {
     theme.value = 'dark'
   }

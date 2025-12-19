@@ -2,12 +2,10 @@
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__content">
-        <!-- Logo -->
         <div class="footer__logo">
           <span class="footer__logo-text">Bárbara Vilard</span>
         </div>
 
-        <!-- Social Links -->
         <div class="footer__social">
           <a
             v-for="social in socialLinks"
