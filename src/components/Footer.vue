@@ -26,7 +26,7 @@
           © {{ currentYear }} Bárbara Vilard. Feito com
           <Heart :size="16" class="footer__heart" />
           por
-          <span class="footer__author"><a href="https://https://www.instagram.com/f_mascena.dev/">Felipe Mascena</a></span>
+          <a class="footer__author" href="https://www.instagram.com/f_mascena.dev/" target="_blank">Felipe Mascena</a>
         </p>
       </div>
     </div>
