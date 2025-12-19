@@ -1,0 +1,89 @@
+.footer {
+  background-color: var(--gradient-hero);
+  border-top: 1px solid hsl(var(--border));
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+
+    @media (min-width: 1024px) {
+      padding: 3rem 2rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--foreground));
+  }
+
+  &__logo-text {
+    font-family: 'Lavishly Yours', serif;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__social-link {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: hsl(var(--secondary));
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(var(--primary));
+    transition: all 0.3s ease;
+    border: 1px solid hsl(var(--background-secondary));
+
+    &:hover {
+      color: hsl(var(--primary));
+      background-color: hsl(var(--primary) / 0.1);
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid hsl(var(--border));
+    margin-top: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  &__copyright {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  &__heart {
+    color: hsl(var(--primary));
+    fill: hsl(var(--primary));
+  }
+
+  &__author {
+    color: hsl(var(--foreground));
+  }
+}
