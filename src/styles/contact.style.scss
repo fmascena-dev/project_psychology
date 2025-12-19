@@ -87,6 +87,7 @@
     box-shadow: 0 4px 16px hsl(150 30% 15% / 0.08);
     transition: all 0.3s ease;
     opacity: 0;
+    animation: fade-in 0.6s ease forwards;
 
     &:hover {
       box-shadow: 0 8px 32px hsl(150 30% 15% / 0.1);

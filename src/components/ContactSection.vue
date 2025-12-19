@@ -14,7 +14,7 @@
           <div
             v-for="(item, index) in contactInfo"
             :key="item.label"
-            class="contact__info-item fade-in"
+            class="contact__info-item"
             :style="{ animationDelay: `${index * 0.1}s` }"
           >
             <div class="contact__info-icon">
