@@ -9,7 +9,7 @@
       <div class="hero__grid">
         <div class="hero__content">
           <div class="hero__badge fade-in" style="animation-delay: 0.2s">
-            <Heart :size="16" />
+            <Heart :size="22" />
             Psicóloga Clínica | CRP 05/65774
           </div>
 

@@ -28,7 +28,7 @@
           © {{ currentYear }} Bárbara Vilard. Feito com
           <Heart :size="16" class="footer__heart" />
           por
-          <span class="footer__author">você</span>
+          <span class="footer__author"><a href="https://https://www.instagram.com/f_mascena.dev/">Felipe Mascena</a></span>
         </p>
       </div>
     </div>
@@ -72,7 +72,7 @@ const LinkedinIcon = () => h('svg', {
 ])
 
 const socialLinks = [
-  { icon: InstagramIcon, href: '#', label: 'Instagram', isComponent: true },
+  { icon: InstagramIcon, href: 'https://www.instagram.com/psi.barbaravilard/', label: 'Instagram', isComponent: true },
   { icon: LinkedinIcon, href: '#', label: 'LinkedIn', isComponent: true },
   { icon: Mail, href: 'mailto:contato@barbaravilard.com.br', label: 'Email', isComponent: true },
 ]
