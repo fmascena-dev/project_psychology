@@ -1,6 +1,5 @@
 <template>
   <section id="inicio" class="hero">
-    <!-- Background decoration -->
     <div class="hero__bg-decoration">
       <div class="hero__bg-blob hero__bg-blob--top"></div>
       <div class="hero__bg-blob hero__bg-blob--bottom"></div>
@@ -8,7 +7,6 @@
 
     <div class="hero__container">
       <div class="hero__grid">
-        <!-- Text Content -->
         <div class="hero__content">
           <div class="hero__badge fade-in" style="animation-delay: 0.2s">
             <Heart :size="16" />
@@ -38,7 +36,6 @@
             </button>
           </div>
 
-          <!-- Trust indicators -->
           <div class="hero__trust fade-in" style="animation-delay: 0.9s">
             <div class="hero__trust-item">
               <Brain :size="22" />
@@ -51,13 +48,10 @@
           </div>
         </div>
 
-        <!-- Image -->
         <div class="hero__image-wrapper fade-in-right" style="animation-delay: 0.4s">
           <div class="hero__image-container">
-            <!-- Background shape -->
             <div class="hero__image-bg"></div>
 
-            <!-- Image -->
             <div class="hero__image">
               <img
                 src="/photo1.jpeg"
@@ -66,7 +60,6 @@
               />
             </div>
 
-            <!-- Floating decoration -->
             <div class="hero__floating-card animate-float">
               <div class="hero__floating-icon">
                 <Heart :size="24" />
