@@ -1,133 +1,151 @@
 <template>
-  <section class="section services" id="services">
+  <section id="servicos" class="services">
     <div class="container">
-      <h2 class="section-title">Meus Serviços</h2>
+      <div class="header">
+        <span class="badge">Serviços</span>
+        <h2>Como posso te ajudar</h2>
+        <p>
+          Ofereço diferentes abordagens terapêuticas para atender às suas
+          necessidades específicas
+        </p>
+      </div>
 
-      <div class="carousel-container" ref="containerRef">
+      <div class="carousel-wrapper">
+        <button
+          class="nav-btn left"
+          :class="{ hidden: !canScrollLeft }"
+          :disabled="!canScrollLeft"
+          @click="scroll('left')"
+        >
+          <ChevronLeft />
+        </button>
+
+        <button
+          class="nav-btn right"
+          :class="{ hidden: !canScrollRight }"
+          :disabled="!canScrollRight"
+          @click="scroll('right')"
+        >
+          <ChevronRight />
+        </button>
+
         <div
-          class="carousel-track"
-          :style="{ transform: `translateX(-${trackTranslate}px)` }"
-          ref="trackRef"
+          ref="carouselRef"
+          class="carousel"
+          @scroll="checkScroll"
         >
           <div
             v-for="(service, index) in services"
-            :key="index"
-            class="service-card"
-            ref="cardRefs"
+            :key="service.title"
+            class="card-wrapper"
+            :style="{ animationDelay: `${index * 0.1}s` }"
           >
-            <div class="service-icon">{{ service.icon }}</div>
-            <h3>{{ service.title }}</h3>
-            <p>{{ service.text }}</p>
+            <div class="card">
+              <div class="icon" :class="service.color">
+                <component :is="service.icon" />
+              </div>
+
+              <h3>{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="carousel-controls">
-        <button class="carousel-btn" @click="prevSlide">
-          <i class="pi pi-arrow-left"></i>
-        </button>
-        <button class="carousel-btn" @click="nextSlide">
-          <i class="pi pi-arrow-right"></i>
-        </button>
-      </div>
-
-      <div class="carousel-dots">
-        <span
-          v-for="(p, i) in pages"
-          :key="i"
-          class="dot"
-          :class="{ active: i === pageIndex }"
-          @click="goToPage(i)"
-        ></span>
+      <div class="dots">
+        <span v-for="(_, i) in services" :key="i" />
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
+import { ref, onMounted } from "vue";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Brain,
+  Heart,
+  Users,
+  Sparkles,
+  Target,
+  MessageCircle,
+} from "lucide-vue-next";
+
+type Direction = "left" | "right";
 
 const services = [
-  { icon: '🧠', title: 'Terapia Individual', text: 'Atendimento personalizado...' },
-  { icon: '👥', title: 'Terapia de Casal', text: 'Apoio para melhorar comunicação...' },
-  { icon: '😌', title: 'Gestão de Ansiedade', text: 'Técnicas para lidar com ansiedade...' },
-  { icon: '💪', title: 'Autoestima', text: 'Fortalecimento da autoconfiança...' },
-]
+  {
+    icon: Brain,
+    title: "Terapia Individual",
+    description:
+      "Sessões personalizadas para adultos que buscam autoconhecimento, desenvolvimento pessoal e superação de desafios emocionais.",
+    color: "primary",
+  },
+  {
+    icon: Heart,
+    title: "Ansiedade e Estresse",
+    description:
+      "Tratamento especializado para transtornos de ansiedade, síndrome do pânico e gerenciamento do estresse.",
+    color: "accent",
+  },
+  {
+    icon: Users,
+    title: "Terapia de Casal",
+    description:
+      "Acompanhamento para casais que desejam melhorar a comunicação e resolver conflitos.",
+    color: "green",
+  },
+  {
+    icon: Sparkles,
+    title: "Desenvolvimento Pessoal",
+    description:
+      "Processo terapêutico focado em autoestima e inteligência emocional.",
+    color: "accent",
+  },
+  {
+    icon: Target,
+    title: "Burnout e Carreira",
+    description:
+      "Suporte para profissionais enfrentando esgotamento e transições de carreira.",
+    color: "primary",
+  },
+  {
+    icon: MessageCircle,
+    title: "Atendimento Online",
+    description:
+      "Sessões por videochamada com a mesma qualidade do atendimento presencial.",
+    color: "accent",
+  },
+];
 
-const visibleCards = ref(2)
-const gapPx = 24
+const carouselRef = ref<HTMLDivElement | null>(null);
+const canScrollLeft = ref(false);
+const canScrollRight = ref(true);
 
-const currentIndex = ref(0)
-const containerRef = ref<HTMLElement | null>(null)
-const trackRef = ref<HTMLElement | null>(null)
-const cardRefs = ref<Array<HTMLElement>>([])
+const checkScroll = () => {
+  if (!carouselRef.value) return;
 
-const cardWidth = ref(0)
-const trackTranslate = ref(0)
+  const { scrollLeft, scrollWidth, clientWidth } = carouselRef.value;
 
-const pages = computed(() => Math.max(1, Math.ceil(services.length - visibleCards.value + 1)))
-const pageIndex = computed(() => {
-  return currentIndex.value
-})
+  canScrollLeft.value = scrollLeft > 0;
+  canScrollRight.value = scrollLeft < scrollWidth - clientWidth - 10;
+};
 
-const recalc = async () => {
-  await nextTick()
-  const firstCard = (cardRefs.value && cardRefs.value[0]) || null
-  if (!firstCard || !containerRef.value) return
+const scroll = (direction: Direction) => {
+  if (!carouselRef.value) return;
 
-  cardWidth.value = firstCard.getBoundingClientRect().width
-  trackTranslate.value = currentIndex.value * (cardWidth.value + gapPx)
-}
+  carouselRef.value.scrollBy({
+    left: direction === "left" ? -340 : 340,
+    behavior: "smooth",
+  });
+};
 
-const nextSlide = () => {
-  const maxIndex = Math.max(0, services.length - visibleCards.value)
-  currentIndex.value = currentIndex.value >= maxIndex ? 0 : currentIndex.value + 1
-  trackTranslate.value = currentIndex.value * (cardWidth.value + gapPx)
-}
-
-const prevSlide = () => {
-  const maxIndex = Math.max(0, services.length - visibleCards.value)
-  currentIndex.value = currentIndex.value <= 0 ? maxIndex : currentIndex.value - 1
-  trackTranslate.value = currentIndex.value * (cardWidth.value + gapPx)
-}
-
-const goToPage = (page: number) => {
-  const maxIndex = Math.max(0, services.length - visibleCards.value)
-  const idx = Math.min(maxIndex, Math.max(0, page))
-  currentIndex.value = idx
-  trackTranslate.value = currentIndex.value * (cardWidth.value + gapPx)
-}
-
-let resizeObserver: ResizeObserver | null = null
-onMounted(async () => {
-  const cards = trackRef.value?.querySelectorAll('.service-card') || []
-  cardRefs.value = Array.from(cards) as HTMLElement[]
-
-  await recalc()
-
-  if (containerRef.value) {
-    resizeObserver = new ResizeObserver(() => recalc())
-    resizeObserver.observe(containerRef.value)
-  }
-
-  const handleWindowResize = () => {
-    const w = window.innerWidth
-    if (w < 720) visibleCards.value = 1
-    else visibleCards.value = 2
-    const maxIndex = Math.max(0, services.length - visibleCards.value)
-    if (currentIndex.value > maxIndex) currentIndex.value = maxIndex
-    recalc()
-  }
-  window.addEventListener('resize', handleWindowResize)
-  handleWindowResize()
-})
-
-onBeforeUnmount(() => {
-  if (resizeObserver && containerRef.value) resizeObserver.unobserve(containerRef.value)
-  window.removeEventListener('resize', () => {})
-})
+onMounted(() => {
+  checkScroll();
+});
 </script>
 
 <style scoped lang="scss">
-@use '../styles/services.style.scss';
+@use "../styles/services.style.scss";
 </style>
