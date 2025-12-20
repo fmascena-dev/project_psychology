@@ -32,8 +32,8 @@
     background-color: hsl(var(--primary) / 0.1);
     border-radius: 999px;
     color: hsl(var(--primary));
-    font-size: 1.15rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 1rem;
     border: 1px solid hsl(var(--background-secondary));
   }
@@ -55,8 +55,8 @@
   }
 
   &__subtitle {
-    font-size: 1.125rem;
-    color: hsl(var(--muted-foreground));
+    font-size: 1.25rem;
+    color: hsl(var(--primary));
   }
 
   &__grid {
@@ -113,8 +113,8 @@
   }
 
   &__info-label {
-    font-size: 0.875rem;
-    color: hsl(var(--muted-foreground));
+    font-size: 0.99rem;
+    color: hsl(var(--primary));
     margin-bottom: 0.25rem;
   }
 
@@ -156,9 +156,9 @@
   }
 
   &__label {
-    font-size: 0.875rem;
+    font-size: 0.99rem;
     font-weight: 500;
-    color: hsl(var(--foreground));
+    color: hsl(var(--primary));
   }
 
   &__input,
@@ -167,7 +167,7 @@
     background-color: hsl(var(--background));
     border: 1px solid hsl(var(--border));
     border-radius: 0.5rem;
-    color: hsl(var(--foreground));
+    color: hsl(var(--primary));
     font-family: inherit;
     font-size: 1rem;
     transition: border-color 0.2s ease;
@@ -193,7 +193,7 @@
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;

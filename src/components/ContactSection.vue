@@ -109,7 +109,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Endereço',
-    value: 'São Paulo, SP',
+    value: 'Rio de Janeiro, RJ',
   },
   {
     icon: Clock,

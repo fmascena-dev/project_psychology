@@ -16,7 +16,7 @@
             class="footer__social-link"
             :aria-label="social.label"
           >
-            <component :is="social.icon" :size="20" />
+            <component :is="social.icon" :size="28" />
           </a>
         </div>
       </div>
@@ -24,7 +24,7 @@
       <div class="footer__bottom">
         <p class="footer__copyright">
           © {{ currentYear }} Bárbara Vilard. Feito com
-          <Heart :size="16" class="footer__heart" />
+          <Heart :size="24" class="footer__heart" />
           por
           <a class="footer__author" href="https://www.instagram.com/f_mascena.dev/" target="_blank">Felipe Mascena</a>
         </p>
@@ -39,8 +39,8 @@ import { Heart, Mail } from 'lucide-vue-next'
 
 const InstagramIcon = () => h('svg', {
   xmlns: 'http://www.w3.org/2000/svg',
-  width: '20',
-  height: '20',
+  width: '28',
+  height: '28',
   viewBox: '0 0 24 24',
   fill: 'none',
   stroke: 'currentColor',
@@ -55,8 +55,8 @@ const InstagramIcon = () => h('svg', {
 
 const LinkedinIcon = () => h('svg', {
   xmlns: 'http://www.w3.org/2000/svg',
-  width: '20',
-  height: '20',
+  width: '28',
+  height: '28',
   viewBox: '0 0 24 24',
   fill: 'none',
   stroke: 'currentColor',

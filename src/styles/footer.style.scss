@@ -26,7 +26,7 @@
 
   &__logo-text {
     font-family: 'Lavishly Yours', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 600;
     user-select: none;
   }
@@ -38,8 +38,8 @@
   }
 
   &__social-link {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
     background-color: hsl(var(--secondary));
     border-radius: 0.5rem;
     display: flex;
@@ -63,7 +63,7 @@
   }
 
   &__copyright {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: bold;
     color: hsl(var(--foreground));
     display: flex;
